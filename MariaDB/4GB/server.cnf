@@ -1,0 +1,79 @@
+[server]
+
+[mysqld]
+port = 3306
+socket = /data/mariadb/mariadb.sock
+pid-file = /var/run/mariadb/mariadb.pid
+datadir = /data/mariadb
+user = mysql
+plugin_dir = /usr/lib64/mysql/plugin
+default_storage_engine = InnoDB
+
+# devel
+#general_log = 1
+#general_log_file = /var/log/mariadb/general.log
+
+character_set_client = utf8
+character_set_server = utf8
+character_set_filesystem = binary
+
+innodb_buffer_pool_size = 2G
+innodb_data_file_path = ibdata1:10M:autoextend
+innodb_data_home_dir = /data/mariadb
+innodb_file_format = Barracuda
+innodb_file_per_table = 1
+innodb_flush_log_at_trx_commit = 1
+innodb_flush_method = O_DIRECT
+innodb_io_capacity = 2000
+innodb_lock_wait_timeout = 120
+innodb_log_buffer_size = 8M
+innodb_log_file_size = 256M
+innodb_log_group_home_dir = /data/mariadb
+innodb_max_dirty_pages_pct = 90
+innodb_read_io_threads = 8
+innodb_strict_mode = 1
+innodb_thread_concurrency = 16
+innodb_use_sys_malloc = 1
+innodb_write_io_threads = 8
+
+max_connections = 512
+skip_name_resolve = 1
+skip_external_locking = 1
+thread_handling = pool-of-threads
+transaction_isolation = READ-COMMITTED
+
+plugin-load = handlersocket.so
+
+log_output = file
+log_error = /var/log/mariadb/error.log
+slow_query_log = 1
+slow_query_log_file = /var/log/mariadb/slow.log
+long_query_time = 3
+log_bin = mariadb-bin
+log_bin_index = mariadb-bin
+binlog_format = mixed
+log_queries_not_using_indexes = ON
+expire_logs_days = 7
+
+server-id = 1
+
+key_buffer = 384M
+max_allowed_packet = 16M
+max_heap_table_size = 64M
+myisam_sort_buffer_size = 128M
+query_cache_size= 64M
+query_cache_type = 0
+read_buffer_size = 2M
+read_rnd_buffer_size = 16M
+sort_buffer_size = 8M
+table_open_cache = 2048
+thread_cache = 8
+thread_concurrency = 4
+tmp_table_size = 64M
+
+
+[embedded]
+
+[mariadb]
+
+[mariadb-10.0]
