@@ -1,0 +1,26 @@
+[mysql]
+auto_rehash = 1
+prompt = '\u@\h> '
+
+[mysql_upgrade]
+
+[mysqladmin]
+
+[mysqlbinlog]
+
+[mysqlcheck]
+
+[mysqldump]
+all_databases
+opt
+flush_logs
+single_transaction
+master_data = 2
+events
+max_allowed_packet = 32M
+
+[mysqlimport]
+
+[mysqlshow]
+
+[mysqlslap]
