@@ -55,7 +55,7 @@ binlog_format = mixed
 log_queries_not_using_indexes = ON
 expire_logs_days = 30
 
-server-id = 100
+server-id = 1
 
 key_buffer = 32M
 max_allowed_packet = 8M
