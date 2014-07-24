@@ -1,0 +1,24 @@
+ipcp-accept-local
+ipcp-accept-remote
+ms-dns  8.8.8.8
+ms-dns  8.8.4.4
+#ms-wins 192.168.1.2
+#ms-wins 192.168.1.4
+netmask 255.255.255.0
+persist
+noccp
+auth
+crtscts
+idle 1800
+mtu 1300
+mru 1300
+nodefaultroute
+debug
+lock
+#proxyarp
+connect-delay 5000
+refuse-pap
+refuse-chap
+refuse-mschap
+require-mschap-v2
+logfile /var/log/xl2tpd.log
