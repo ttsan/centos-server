@@ -1,0 +1,15 @@
+.project
+.buildpath
+.settings
+nbproject/
+*.sublime-project
+*.sublime-workspace
+sftp-config.json
+sftp-config-alt.json
+compiles/*
+log/*
+tmp/*
+.sass-cache/
+config.rb
+build.xml
+.externalToolBuilders
