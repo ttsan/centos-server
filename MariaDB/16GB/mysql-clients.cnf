@@ -16,7 +16,6 @@ opt
 flush_logs
 single_transaction
 master_data = 2
-events
 max_allowed_packet = 128M
 
 [mysqlimport]
