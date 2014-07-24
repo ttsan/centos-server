@@ -1,0 +1,24 @@
+
+case ${UID} in
+    0)
+        PS1='\[\e[1;35m\]\H\[\e[0m\] \[\e[4;31m\]\[\e[1;31m\]${PWD}\[\e[0m\]\[\e[1;31m\]\$\[\e[0m\] '
+        PS2='\[\e[1;31m\]>\[\e[0m\] '
+        ;;
+    *)
+        PS1='\[\e[0;35m\]\H\[\e[0m\] \[\e[4;34m\]${PWD}\[\e[0m\]\[\e[0;34m\]\$\[\e[0m\] '
+        PS2='\[\e[0;34m\]>\[\e[0m\] '
+        ;;
+esac
+
+HISTTIMEFORMAT='%Y-%m-%d %T '
+export HISTTIMEFORMAT
+
+alias ls='ls --color=tty -F'
+alias ll='ls --color=tty -Flh'
+alias la='ls --color=tty -FlhA'
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+alias vi='/usr/bin/vim'
+alias ..='cd ../'
+alias ...='cd ../../'
