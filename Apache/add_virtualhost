@@ -1,0 +1,32 @@
+#!/bin/bash
+
+HOST=$1
+
+if [ -z $HOST ]; then
+    echo "Usage: $0 <HOSTNAME>"
+    exit 1
+fi
+
+if [ -d /data/html/$HOST ]; then
+    echo "DocumentRoot Directory already Exists!"
+    exit 1
+fi
+
+CONF=/etc/httpd/conf.d/virtualhost.$HOST.conf
+
+echo "NameVirtualHost *:80" >> $CONF
+echo "<VirtualHost *:80>" >> $CONF
+echo "    ServerName      $HOST" >> $CONF
+echo "    ServerAlias     www.$HOST $HOST" >> $CONF
+echo "    ServerAdmin     webmaster@$HOST" >> $CONF
+echo "    DocumentRoot    /data/html/$HOST" >> $CONF
+echo "    ErrorLog        logs/$HOST/error_log" >> $CONF
+echo "    CustomLog       logs/$HOST/access_log combined env=!no_log" >> $CONF
+echo "</VirtualHost>" >> $CONF
+
+mkdir -p /data/html/$HOST
+chown apache:apache /data/html/$HOST
+chmod 777 /data/html/$HOST
+mkdir -p /var/log/httpd/$HOST
+
+/etc/init.d/httpd restart

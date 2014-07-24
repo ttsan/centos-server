@@ -1,0 +1,33 @@
+#!/bin/bash
+
+HOST=$1
+
+if [ -z $HOST ]; then
+    echo "Usage: $0 <HOSTNAME>"
+    exit 1
+fi
+
+if [ ! -d /data/html/$HOST ]; then
+    echo "DocumentRoot Directory not Exists!"
+    exit 1
+fi
+
+if [ ! -d /data/backup ]; then
+    mkdir -p /data/backup
+fi
+
+/etc/init.d/httpd stop
+
+NOW=`date '+%Y%m%d-%H%M%S'`
+
+cd /data/html
+tar czpf /data/backup/$HOST.$NOW.html.tgz $HOST
+/bin/rm -rf /data/html/$HOST
+
+cd /var/log/httpd
+tar czpf /data/backup/$HOST.$NOW.log.tgz $HOST
+/bin/rm -rf /var/log/httpd/$HOST
+
+/bin/rm -f  /etc/httpd/conf.d/virtualhost.$HOST.conf
+
+/etc/init.d/httpd start
