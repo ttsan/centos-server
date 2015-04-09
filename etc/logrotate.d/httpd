@@ -1,0 +1,11 @@
+/data/log/httpd/*log
+/data/log/httpd/*/*log
+{
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/systemctl reload httpd.service > /dev/null 2>/dev/null || true
+    endscript
+}
